@@ -2,5 +2,14 @@ header{
 	
 	text-align: center;
 	font-size: 30px;
+	padding : 10px;
 	
+}
+
+#main{
+	text-align: center;	
+}
+
+#description{
+	padding: 6px;
 }
