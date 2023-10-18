@@ -1,0 +1,87 @@
+<!DOCTYPE HTML>
+<HTML>
+    <HEAD lang="ja">
+		<meta charset="UTF-8">
+		<title>TLCommander</title>
+		<link rel="stylesheet" href="style.css">
+		<link rel="stylesheet" href="../textbox.css">
+		<script src="script.js">
+		<script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Stick&display=swap" rel="stylesheet">
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Stick&family=Yusei+Magic&display=swap" rel="stylesheet">
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Kaisei+Decol&family=Stick&family=Yusei+Magic&display=swap" rel="stylesheet">
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Kaisei+Decol&family=Kiwi+Maru:wght@300&family=Stick&family=Yusei+Magic&display=swap" rel="stylesheet">
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Tilt+Warp&display=swap" rel="stylesheet">
+
+    </HEAD>
+    <BODY>
+		<header>計算機:チェストのアイテム期待値</header>
+		<HR>
+		<div id="main">
+			<div class="explainer">確定枠チェスト</div>
+			<table id="input">
+				
+				<tr>
+					<td class="inputf">
+					<p>アイテムの出現数<br>
+					<input type="number" id="guaranteed_all_num" min="0" size="5" placeholder="0"></p>
+					</td>
+					<td class="inputf">
+					<p>調べたいアイテムがチェストに占める枠数<br>
+					<input type="number" id="guaranteed_target_slot" min="0" size="5" placeholder="0"></p>
+					</td>
+					<td class="inputf">
+					<p>全アイテムのチェスト内の枠数<br>
+					<input type="number" id="guaranteed_all_slot" min="0" size="5" placeholder="0"></p>
+					</td>
+					<td class="inputf">
+					<p>調べたいアイテムのスタック数<br>
+					(異なるものが複数ある場合は平均値)<br>
+					<input type="number" id="guaranteed_target_num" min="0" size="5" placeholder="0"></p>
+					</td>
+				</tr>
+			</table>
+			<HR>
+			<div class="explainer">非確定枠チェスト</div>
+			<table id="input">
+				
+				<tr>
+					<td class="inputf">
+					<p>アイテムの出現数<br>
+					<input type="number" id="else_all_num" min="0" size="5" placeholder="0"></p>
+					</td>
+					<td class="inputf">
+					<p>調べたいアイテムがチェストに占める枠数<br>
+					<input type="number" id="else_target_slot" min="0" size="5" placeholder="0"></p>
+					</td>
+					<td class="inputf">
+					<p>全アイテムのチェスト内の枠数<br>
+					<input type="number" id="else_all_slot" min="0" size="5" placeholder="0"></p>
+					</td>
+					<td class="inputf">
+					<p>調べたいアイテムのスタック数<br>
+					(異なるものが複数ある場合は平均値)<br>
+					<input type="number" id="else_target_num" min="0" size="5" placeholder="0"></p>
+					</td>
+				</tr>
+			</table>
+			<HR>
+			<div class="explainer">1個のチェストから出る平均値は...</div><BR>
+			<button id="calc" onclick="calc()">計算する</button><BR><BR>
+			<div id="answer">0</div>
+			
+		</div>
+	
+		
+    </BODY>
+</HTML>

@@ -1,0 +1,29 @@
+input[type="number"]{
+	background-color:#ffffff;
+	width: 50%;
+	height:30px;
+	text-align:center;
+	font-size: 15px;
+	border-width: 1px;
+}
+
+button{
+	background-color: #ffffff;
+  height: 50px;
+  color: #000000;
+  font-size: 30px;
+  border-width: 1px;
+  border-radius: 10px; 
+	
+}
+
+button:hover{
+	background-color: #ffdddd;
+  height: 50px;
+  color: #000000;
+  font-size: 30px;
+  border-width: 1px;
+  border-radius: 10px; 
+	
+}
+
