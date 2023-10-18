@@ -10,6 +10,6 @@ function calc(){
 	
 	var answer=gts/gas*gtn*gan+ets/eas*etn*ean;
 	
-	document.getElementById("answer").innerHTML=answer;
+	document.getElementById("answer").innerHTML="期待値の個数:"+answer+"個、%表記:"+answer*100+"%";
 	
 }
