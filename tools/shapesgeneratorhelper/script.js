@@ -48,17 +48,23 @@ function calc(){
 	var phi=parseFloat(document.getElementById("phi").value);
 	var theta=parseFloat(document.getElementById("theta").value);
 	
+	//θ回転用
+	for(var i=0;i<useful_list.length;i++){
+		var tempr=very_useful_list[i][2]-x;
+		very_useful_list[i][2]=tempr*Math.cos(theta*Math.PI/180)+x;
+		very_useful_list[i][3]=tempr*Math.sin(theta*Math.PI/180)+y;
+		
+	}
 	
 	
+	//φ回転専門
 	for(var i=0;i<useful_list.length;i++){
 		var tempr=distance(x,y,z,very_useful_list[i][2],very_useful_list[i][3],very_useful_list[i][4]);
 		var temptheta=calcTheta(x,y,z,very_useful_list[i][2],very_useful_list[i][3],very_useful_list[i][4]);
 		var tempphi=calcPhi(x,y,z,very_useful_list[i][2],very_useful_list[i][3],very_useful_list[i][4]);
 		tempphi=tempphi-phi;
-		temptheta=temptheta+theta*Math.abs(Math.cos(tempphi*Math.PI/180));
 		console.log(tempr+" "+Math.sin(temptheta*Math.PI/180)+" "+temptheta+" "+tempphi);
 		very_useful_list[i][2]=round(shiftx+x+tempr*Math.abs(Math.cos(temptheta*Math.PI/180))*Math.cos(tempphi*Math.PI/180));
-		very_useful_list[i][3]=round(shifty+y+tempr*Math.sin(temptheta*Math.PI/180));
 		very_useful_list[i][4]=round(shiftz+z+tempr*Math.abs(Math.cos(temptheta*Math.PI/180))*Math.sin(tempphi*Math.PI/180));
 		
 		
@@ -118,9 +124,19 @@ function calcTheta(x,y,z,x2,y2,z2){
 	}else{
 		return Math.atan((y2-y)/(((z2-z)**2+(x2-x)**2)**0.5))*180/Math.PI+180;
 		
-	}
+	}	
 	
-		
+}
+
+//θを計算 (坂において)
+function calcTheta2(theta,phi){
+	if(theta>89.99 && theta<90.01)return 90;
+	if(theta>269.99 && theta<270.01)return 270;
+	if(phi>-0.99 && phi<0.01)return 0;
+	if(phi>-89.99 && phi<90.01)return 0;
+	if(phi>179.99 && phi<180.01)return 0;
+	
+	return Math.atan((Math.tan(theta*Math.PI/180)**2+(Math.tan(phi*Math.PI/180)**2)**0.5))*180/Math.PI;
 	
 }
 
