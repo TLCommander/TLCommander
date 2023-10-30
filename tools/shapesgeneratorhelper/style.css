@@ -18,8 +18,7 @@ header{
 }
 
 #input{
-	margin: 0 auto;
-	width: 100%;
+	
 }
 .explainer{
 	text-align:  center;
@@ -29,7 +28,7 @@ header{
 
 #answer{
 	text-align:  center;
-	font-size: 50px;
+	font-size: 10px;
 	width: 100%;
 	
 }
@@ -48,10 +47,9 @@ tr{
 	text-align: center;
 	
 }
-
-input[type="number"]{
+.coords{
 	background-color:#ffffff;
-	width: 50%;
+	width: 20%;
 	height:30px;
 	text-align:center;
 	font-size: 15px;
