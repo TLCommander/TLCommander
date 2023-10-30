@@ -61,12 +61,13 @@ function calc(){
 		very_useful_list[i][3]=round(shifty+y+tempr*Math.sin(temptheta*Math.PI/180));
 		very_useful_list[i][4]=round(shiftz+z+tempr*Math.cos(temptheta*Math.PI/180)*Math.sin(tempphi*Math.PI/180));
 		
+		
 	}
 	
 	var result="sequencecommand 0 "
 	for(var i=0;i<very_useful_list.length;i++){
 		for(var j=0;j<very_useful_list[0].length;j++){
-			if(2<=j && j<=4){
+			if(2<=j && j<=4 && document.getElementById("select2").innerHTML=="相対座標"){
 				result+="~";
 			}
 			result=result+very_useful_list[i][j]+" ";
@@ -122,7 +123,15 @@ function changeMode(){
 	}
 	
 }
-
+function changeMode2(){
+	var now=document.getElementById("select2").innerHTML;
+	if(now=="相対座標"){
+		document.getElementById("select2").innerHTML="絶対座標";
+	}else{
+		document.getElementById("select2").innerHTML="相対座標";
+	}
+	
+}
 function round(val){
 	if(val<0.001 && val>-0.001)return 0;
 	return (Math.round(val * 1000)) / 1000;
