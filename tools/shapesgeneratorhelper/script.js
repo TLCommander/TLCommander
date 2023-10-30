@@ -54,12 +54,12 @@ function calc(){
 		var tempr=distance(x,y,z,very_useful_list[i][2],very_useful_list[i][3],very_useful_list[i][4]);
 		var temptheta=calcTheta(x,y,z,very_useful_list[i][2],very_useful_list[i][3],very_useful_list[i][4]);
 		var tempphi=calcPhi(x,y,z,very_useful_list[i][2],very_useful_list[i][3],very_useful_list[i][4]);
-		temptheta=temptheta+theta;
 		tempphi=tempphi-phi;
-		console.log(tempphi+" "+Math.sin(tempphi*Math.PI/180));
-		very_useful_list[i][2]=round(shiftx+x+tempr*Math.cos(temptheta*Math.PI/180)*Math.cos(tempphi*Math.PI/180));
+		temptheta=temptheta+theta*Math.abs(Math.cos(tempphi*Math.PI/180));
+		console.log(tempr+" "+Math.sin(temptheta*Math.PI/180)+" "+temptheta+" "+tempphi);
+		very_useful_list[i][2]=round(shiftx+x+tempr*Math.abs(Math.cos(temptheta*Math.PI/180))*Math.cos(tempphi*Math.PI/180));
 		very_useful_list[i][3]=round(shifty+y+tempr*Math.sin(temptheta*Math.PI/180));
-		very_useful_list[i][4]=round(shiftz+z+tempr*Math.cos(temptheta*Math.PI/180)*Math.sin(tempphi*Math.PI/180));
+		very_useful_list[i][4]=round(shiftz+z+tempr*Math.abs(Math.cos(temptheta*Math.PI/180))*Math.sin(tempphi*Math.PI/180));
 		
 		
 	}
@@ -96,7 +96,12 @@ function calcPhi(x,y,z,x2,y2,z2){
 			return 270;
 		}
 	}
-	return Math.atan((z2-z)/(x2-x))*180/Math.PI;
+	if((x2-x)>0){
+		return Math.atan((z2-z)/(x2-x))*180/Math.PI;
+	}else{
+		return Math.atan((z2-z)/(x2-x))*180/Math.PI+180;
+	}
+		
 }
 
 //θを計算 (x,y,zが基準点)
@@ -108,7 +113,15 @@ function calcTheta(x,y,z,x2,y2,z2){
 			return 270;
 		}
 	}
-	return Math.atan((y2-y)/(((z2-z)**2+(x2-x)**2)**0.5))*180/Math.PI;
+	if((x2-x)>0){
+		return Math.atan((y2-y)/(((z2-z)**2+(x2-x)**2)**0.5))*180/Math.PI;
+	}else{
+		return Math.atan((y2-y)/(((z2-z)**2+(x2-x)**2)**0.5))*180/Math.PI+180;
+		
+	}
+	
+		
+	
 }
 
 function changeMode(){
@@ -135,4 +148,15 @@ function changeMode2(){
 function round(val){
 	if(val<0.001 && val>-0.001)return 0;
 	return (Math.round(val * 1000)) / 1000;
+}
+
+function copytoClip(){
+	
+	if (navigator.clipboard) { // navigator.clipboardが使えるか判定する
+		return navigator.clipboard.writeText(document.getElementById("answer").innerHTML.replaceAll("&amp;","&"));
+	}
+}
+function calc2(){
+	calc();
+	copytoClip();
 }
