@@ -56,6 +56,7 @@ function calc(){
 		var tempphi=calcPhi(x,y,z,very_useful_list[i][2],very_useful_list[i][3],very_useful_list[i][4]);
 		temptheta=temptheta+theta;
 		tempphi=tempphi-phi;
+		console.log(tempphi+" "+Math.sin(tempphi*Math.PI/180));
 		very_useful_list[i][2]=round(shiftx+x+tempr*Math.cos(temptheta*Math.PI/180)*Math.cos(tempphi*Math.PI/180));
 		very_useful_list[i][3]=round(shifty+y+tempr*Math.sin(temptheta*Math.PI/180));
 		very_useful_list[i][4]=round(shiftz+z+tempr*Math.cos(temptheta*Math.PI/180)*Math.sin(tempphi*Math.PI/180));
@@ -123,6 +124,6 @@ function changeMode(){
 }
 
 function round(val){
-	if(val<0.001)return 0;
+	if(val<0.001 && val>-0.001)return 0;
 	return (Math.round(val * 1000)) / 1000;
 }
