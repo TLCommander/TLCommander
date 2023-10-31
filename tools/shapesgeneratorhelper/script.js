@@ -65,6 +65,7 @@ function calc(){
 		tempphi=tempphi-phi;
 		console.log(tempr+" "+Math.sin(temptheta*Math.PI/180)+" "+temptheta+" "+tempphi);
 		very_useful_list[i][2]=round(shiftx+x+tempr*Math.abs(Math.cos(temptheta*Math.PI/180))*Math.cos(tempphi*Math.PI/180));
+		very_useful_list[i][3]=round(shifty+very_useful_list[i][3]);
 		very_useful_list[i][4]=round(shiftz+z+tempr*Math.abs(Math.cos(temptheta*Math.PI/180))*Math.sin(tempphi*Math.PI/180));
 		
 		
@@ -128,17 +129,6 @@ function calcTheta(x,y,z,x2,y2,z2){
 	
 }
 
-//θを計算 (坂において)
-function calcTheta2(theta,phi){
-	if(theta>89.99 && theta<90.01)return 90;
-	if(theta>269.99 && theta<270.01)return 270;
-	if(phi>-0.99 && phi<0.01)return 0;
-	if(phi>-89.99 && phi<90.01)return 0;
-	if(phi>179.99 && phi<180.01)return 0;
-	
-	return Math.atan((Math.tan(theta*Math.PI/180)**2+(Math.tan(phi*Math.PI/180)**2)**0.5))*180/Math.PI;
-	
-}
 
 function changeMode(){
 	var now=document.getElementById("select").innerHTML;
